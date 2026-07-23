@@ -133,6 +133,43 @@ export async function updateCustomerRole(
   }
 }
 
+
+
+
+/**
+ * Yeni müşteri oluştur
+ */
+export async function createCustomer(
+  formData: CustomerFormData
+): Promise<{ success: boolean; error?: string; customerId?: string }> {
+  try {
+    // Not: Bu fonksiyon sadece profiles tablosuna kayıt ekler.
+    // Eğer müşterinin giriş yapabilmesi (auth) gerekiyorsa,
+    // önce supabaseAdmin.auth.admin.createUser(...) ile auth kaydı oluşturulmalı.
+
+    const { data, error } = await supabaseAdmin
+      .from('profiles')
+      .insert({
+        ad: formData.ad,
+        soyad: formData.soyad,
+        telefon: formData.telefon || null,
+        rol: 'musteri',
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    revalidatePath('/admin/customers');
+    return { success: true, customerId: data.id };
+
+  } catch (error: any) {
+    console.error("createCustomer error:", error);
+    return { success: false, error: error.message };
+  }
+}
+
+
 /**
  * Müşteri bilgilerini güncelle
  */
