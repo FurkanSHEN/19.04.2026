@@ -48,6 +48,8 @@ export default function VendorModalV2({
     dahili_notlar: "",
   });
 
+  const guvenSkoru = formData.guven_skoru ?? 0;
+
   // Düzenleme modunda form'u doldur
   useEffect(() => {
     if (editingVendor) {
@@ -397,13 +399,13 @@ export default function VendorModalV2({
                   <div className="flex items-center justify-between mt-2">
                     <span className="text-[11px] text-stone-500">0</span>
                     <span className={`text-[12px] font-medium ${
-                      formData.guven_skoru >= 80 ? "text-green-600" :
-                      formData.guven_skoru >= 60 ? "text-amber-600" :
+                      guvenSkoru >= 80 ? "text-green-600" :
+                      guvenSkoru >= 60 ? "text-amber-600" :
                       "text-red-600"
                     }`}>
-                      {formData.guven_skoru >= 80 ? "Gemide Ödeme ✓" :
-                       formData.guven_skoru >= 60 ? "Gelişiyor" :
-                       "Teslimatta Ödeme"}
+                      {guvenSkoru >= 80 ? "Gemide Ödeme ✓" :
+                      guvenSkoru >= 60 ? "Gelişiyor" :
+                      "Teslimatta Ödeme"}
                     </span>
                     <span className="text-[11px] text-stone-500">100</span>
                   </div>
