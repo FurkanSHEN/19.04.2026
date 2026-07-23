@@ -8,6 +8,12 @@ export default async function AdminPage() {
     .from('urunler')
     .select('*', { count: 'exact', head: true });
 
+    //aktif ürün listeleme 
+ const { count: activeproductCount } = await supabase
+  .from('urunler')
+  .select('*', { count: 'exact', head: true }) 
+  .eq('durum', 'yayinda');
+
   // Okunmamış mesaj sayısı (Tablonda 'is_read' sütunu olduğunu varsayarsak)
   const { count: messageCount } = await supabase
     .from('messages')
@@ -15,7 +21,7 @@ export default async function AdminPage() {
     .eq('is_read', false); 
 
   return (
-    <div className="min-h-screen bg-[#FAFAF8] flex p-6 gap-6">
+    <div className="min-h-screen bg-[#FAFAF8] flex  gap-6">
       {/* Sol Menü */}
       <aside className="shrink-0">
         <AdminSideBar />
@@ -35,6 +41,12 @@ export default async function AdminPage() {
             <span className="text-xs text-gray-400 uppercase font-medium">Toplam Ürün</span>
             {/* Statik '48' yerine veritabanından gelen rakamı yazıyoruz */}
             <div className="text-2xl font-serif mt-1">{productCount || 0}</div>
+          </div>
+
+          <div className="p-4 border border-[#E8E7E0] rounded-lg">
+            <span className="text-xs text-gray-400 uppercase font-medium">Toplam Aktif Ürün</span>
+            {/* Statik '48' yerine veritabanından gelen rakamı yazıyoruz */}
+            <div className="text-2xl font-serif mt-1">{activeproductCount || 0}</div>
           </div>
 
           <div className="p-4 border border-[#E8E7E0] rounded-lg">
