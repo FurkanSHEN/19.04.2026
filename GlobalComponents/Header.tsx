@@ -31,7 +31,10 @@ export default function Header() {
         {/* Sağ İkonlar */}
         <div className="flex items-center gap-5 text-stone-700">
           <button className="hover:text-stone-900 transition-all"><Search size={19} strokeWidth={1.5} /></button>
-          <button className="hover:text-stone-900 transition-all"><User size={19} strokeWidth={1.5} /></button>
+          
+          <Link href="/admin" className="hover:text-stone-900 transition-all">
+            <User size={19} strokeWidth={1.5} />
+          </Link>
           <button className="relative hover:text-stone-900 transition-all">
             <ShoppingBag size={19} strokeWidth={1.5} />
             <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-stone-900 text-white text-[10px] flex items-center justify-center rounded-full">0</span>
