@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Cormorant_Garamond } from "next/font/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,3 +32,15 @@ export default function RootLayout({
     </html>
   );
 }
+
+
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
+});
+
+// <html> tagına ekleyin:
+<html className={cormorant.variable}></html>
