@@ -33,7 +33,7 @@ function VendorRow({
   vendor: Vendor;
   onEdit: (vendor: Vendor) => void;
   onDelete: (id: number) => void;
-  onToggleStatus: (id: number, status: 'aktif' | 'pasif') => void;
+  onToggleStatus: (id: number, status: VendorDurum) => void;
   onUpdateScore: (id: number, score: number) => void;
 }) {
 
