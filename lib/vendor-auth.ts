@@ -88,7 +88,7 @@ export async function getCurrentVendorInfo(): Promise<VendorInfo | null> {
 /**
  * Sadece vendor_id'yi döner (IDOR koruması için)
  */
-export async function getCurrentVendorId(): Promise<number | null> {
+export async function getCurrentVendorId(): Promise<string | null> {
   const vendorUser = await getCurrentVendorUser();
   return vendorUser?.vendor_id || null;
 }
