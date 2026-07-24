@@ -2,6 +2,9 @@ import { supabaseAdmin } from "@/lib/supabase";
 import AdminProductApproval from "../approval/approval-components/AdminProductApproval";
 import AdminSideBar from "../adminComponents/adminSideBar";
 
+
+export const dynamic = 'force-dynamic';
+
 export default async function ApprovalPage() {
   // 1. Ürünleri çek
   const { data: products, error } = await supabaseAdmin
