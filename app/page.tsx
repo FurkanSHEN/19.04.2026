@@ -4,6 +4,15 @@ import Link from "next/link";
 import Header from "@/GlobalComponents/Header";
 import Footer from "@/GlobalComponents/Footer";
 
+interface OneCikanUrun {
+  id: string;
+  slug: string;
+  ad: string;
+  ana_gorsel: string | null;
+  baz_fiyat: number;
+  para_birimi: string;
+}
+
 async function getSiteAyarlari() {
   const cookieStore = await cookies();
   const supabase = createServerClient(
@@ -59,7 +68,7 @@ async function getOneCikanUrunler() {
     return [];
   }
 
-  return data || [];
+  return (data || []) as OneCikanUrun[];
 }
 
 export default async function Home() {
