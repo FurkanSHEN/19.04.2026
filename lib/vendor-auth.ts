@@ -96,7 +96,7 @@ export async function getCurrentVendorId(): Promise<string | null> {
 /**
  * Kullanıcının belirli bir vendor'a erişim yetkisi var mı kontrol eder
  */
-export async function canAccessVendor(vendorId: number): Promise<boolean> {
+export async function canAccessVendor(vendorId: string): Promise<boolean> {
   const currentVendorId = await getCurrentVendorId();
   return currentVendorId === vendorId;
 }
