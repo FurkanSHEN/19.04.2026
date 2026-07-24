@@ -70,8 +70,8 @@ export default async function Home() {
   ]);
 
   // Yeni Çıkanlar: öne çıkanlarda olmayan ürünler arasından en yeniler
-  const oneCikanIds = new Set(onecikar.map(u => u.id));
-  const yeniCikanlar = urunler.filter(u => !oneCikanIds.has(u.id));
+  const oneCikanIds = new Set(onecikar.map((u: any) => u.id));
+  const yeniCikanlar = urunler.filter((u: any) => !oneCikanIds.has(u.id));
 
   const heroGorsel      = ayarlar["hero_gorsel"]?.aciklama || null;
   const heroBaslik      = ayarlar["hero_baslik"]?.aciklama || "Zamanın Ötesinde Formlar, Rafine Yaşam Alanları.";
