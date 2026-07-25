@@ -17,7 +17,7 @@ export async function updateProductStatus(
       durum: status,
       red_nedeni: action === "reject" ? feedback?.mesaj : null,
       red_kategorisi: action === "reject" ? feedback?.kategori : null,
-    })
+    } as any)
     .eq("id", id);
 
   if (error) {
